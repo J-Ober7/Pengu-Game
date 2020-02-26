@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Ocean")) {
-            rgdb.velocity = new Vector2(rgdb.velocity.x, rgdb.velocity.x * .5f);
+            rgdb.velocity = new Vector2(rgdb.velocity.x, rgdb.velocity.y * .5f);
             rgdb.gravityScale = 0f;
             underWater = true;
         }
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Ocean")) {
             rgdb.gravityScale = 1f;
             underWater = false;
+            rgdb.velocity = new Vector2(rgdb.velocity.x, Mathf.Clamp(rgdb.velocity.y, 1f, 3f));
         }
     }
 
