@@ -19,7 +19,7 @@ public class TransitionCode : MonoBehaviour
 
     void OnCollisionEnter(Collision obj)
     {
-        if (obj.GameObject.tag == "Player")
+        if (obj.gameObject.CompareTag("Player"))
         {
             //do something with changing the map
         }
