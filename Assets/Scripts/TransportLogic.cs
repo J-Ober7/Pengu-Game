@@ -18,12 +18,14 @@ public class TransportLogic : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Player") && type == 1) {
-            Transport(other.gameObject);
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && type == 1)
+        {
+            Transport(collision.gameObject);
         }
-    }
 
+    }
     public void Transport(GameObject Player) {
         Player.transform.position = target.transform.position;
 

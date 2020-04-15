@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FanInteraction : Interaction {
-
+public class FanInteraction : MonoBehaviour {
+    GameObject player;
+    public float force;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,15 +12,28 @@ public class FanInteraction : Interaction {
 	
 	// Update is called once per frame
 	void Update () {
-        if (on)
+        if (player != null)
         {
             Act();
         }
 		
 	}
-
-    public override void Act()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.Translate(0.1f, 0.1f, 0);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player = collision.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            player = null;
+        }
+    }
+    public void Act()
+    {
+        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, force));
     }
 }
