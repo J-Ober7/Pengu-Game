@@ -42,6 +42,7 @@ public class PlayerControllerv2 : MonoBehaviour
 
         if (!inWater)
         {
+
             rb.gravityScale = 1f;
             if (slideTimer == 1.0f)
             {
@@ -174,6 +175,8 @@ public class PlayerControllerv2 : MonoBehaviour
     {
         if (collision.CompareTag("Ocean"))
         {
+
+            sr.sprite = idle_sprite;
             inWater = false;
         }
     }
