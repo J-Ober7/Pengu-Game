@@ -18,6 +18,7 @@ public class PlayerControllerv2 : MonoBehaviour
     public bool inWater = false;
     public float gravityFactor = -1.0f;
     public float swimSpeed = 1.0f;
+    public float maxWaterSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +151,8 @@ public class PlayerControllerv2 : MonoBehaviour
                 }
                 facing = true;
             }
+
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxWaterSpeed);
         }
     }
 
