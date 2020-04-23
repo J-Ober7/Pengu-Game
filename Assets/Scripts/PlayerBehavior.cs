@@ -20,19 +20,25 @@ public class PlayerBehavior : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Fish"))
+        if (collision.CompareTag("Fish"))
         {
             Debug.Log("fish");
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
             if (!Timer.isGameOver)
             {
                 //hungerCount++;
 
-                if (timer.hunger + hungerCount < 100)
+                if (timer.hunger < timer.maxhunger)
                 {
-                    timer.hunger += hungerCount;
+                    if(timer.hunger + 15 > timer.maxhunger)
+                    {
+                        timer.hunger = timer.maxhunger;
+                    }
+                    timer.hunger += 15;
+                    Debug.Log(timer.hunger);
                 }
             }
         }
