@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private int hungerCount = 0;
+    public int hungerCount = 15;
 
     public Timer timer;
 
@@ -24,20 +24,22 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (other.CompareTag("Fish"))
         {
+            Debug.Log("fish");
             Destroy(other.gameObject);
+            if (!Timer.isGameOver)
+            {
+                //hungerCount++;
+
+                if (timer.hunger + hungerCount < 100)
+                {
+                    timer.hunger += hungerCount;
+                }
+            }
         }
     }
 
     private void OnDestroy()
     {
-        if (!Timer.isGameOver)
-        {
-            hungerCount++;
-
-            if (timer.hunger + hungerCount < 100)
-            {
-                timer.hunger = timer.hunger + hungerCount;
-            }
-        }
+        
     }
 }

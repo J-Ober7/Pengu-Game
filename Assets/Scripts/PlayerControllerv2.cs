@@ -121,6 +121,8 @@ public class PlayerControllerv2 : MonoBehaviour
         {
             rb.gravityScale = .05f;
             sr.sprite = slide_sprite;
+            collider.offset = new Vector2(-0.25f, -1.5f);
+            collider.size = new Vector2(5f, 2f);
             if (Input.GetKey(KeyCode.W))
             {
                 rb.AddForce(new Vector2(0, swimSpeed));
